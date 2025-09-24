@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Add movie</title>
 </head>
 <body>
-    
+  <h1>edit a movie</h1>
+  <form action="/movie" method="POST">
+    <label>Name: <input type="text" name="name" ></label><br>
+    <label>director: <input type="text" name="director" ></label><br>
+    <label>watched: <input type="text" name="watched"></label><br>
+    <label>notes: <input type="text" name="notes"></label><br>
+    <label>Description: <textarea name="description"></textarea></label><br>
+    <button type="submit">done</button>
+  </form>
+  <a href="/cars"> Back</a>
 </body>
 </html>
