@@ -16,6 +16,9 @@ const movieSchema = new mongoose.Schema({
   notes: {
     type: String,
   },
+  rating: { 
+    type: Number, min: 1, max: 5 
+  }
 });
 
 
