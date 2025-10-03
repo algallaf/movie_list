@@ -12,8 +12,7 @@
   <label>Director: <input type="text" name="director" value="<%= movie.director %>"></label><br>
   <label>Watched: <input type="checkbox" name="watched" <%= movie.watched ? "checked" : "" %>></label><br>
   <label>Notes: <input type="text" name="notes" value="<%= movie.notes %>"></label><br>
-  <label>Description: <textarea name="description"><%= movie.description %></textarea></label><br>
-<label>Rating (1-5): <input name="rating" type="number" min="1" max="5" value="<%= movie.rating %>"></label>   
+<label>Description: <input type="text" name="description" value="<%= movie.description %>"></label><br><label>Rating (1-5): <input name="rating" type="number" min="1" max="10" value="<%= movie.rating %>"></label>   
  <button type="submit">done</button>
   </form>
   <a href="/users/:userId/movies"> Back</a>

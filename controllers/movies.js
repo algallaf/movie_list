@@ -3,10 +3,10 @@ const router = express.Router();
 const User = require('../models/user.js');
 
 router.get('/new', async (req, res) => {
-  res.render('movies/new.ejs');
+  const currentUser = await User.findById(req.session.user._id);
+  res.render('movies/new.ejs', { user: currentUser });
 });
 
-// INDEX 
 router.get("/", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
@@ -21,23 +21,20 @@ router.get("/", async (req, res) => {
 });
 
 
-// show
 router.get("/:movieId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
     const movie = currentUser.movies.id(req.params.movieId);
-    res.render("movies/show.ejs", { movie });
+    res.render("movies/show.ejs", { movie, user: currentUser });
   } catch (error) {
     console.log(error);
     res.redirect("/");
   }
 });
 
-// nnew
 router.post("/", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
-    // checkbox for watched
     req.body.watched = req.body.watched === "on";
     currentUser.movies.push(req.body);
     await currentUser.save();
@@ -48,7 +45,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// del 
 router.delete("/:movieId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
@@ -61,19 +57,17 @@ router.delete("/:movieId", async (req, res) => {
   }
 });
 
-// EDIT 
 router.get("/:movieId/edit", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
     const movie = currentUser.movies.id(req.params.movieId);
-    res.render("movies/edit.ejs", { movie });
+    res.render("movies/edit.ejs", { movie, user: currentUser });
   } catch (error) {
     console.log(error);
     res.redirect("/");
   }
 });
 
-// UPDATE 
 router.put("/:movieId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);

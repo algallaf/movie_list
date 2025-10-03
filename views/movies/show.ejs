@@ -5,10 +5,11 @@
   <p><strong>Director:</strong> <%= movie.director %></p>
   <p><strong>Watched:</strong> <%= movie.watched ? "✅ Yes" : "❌ No" %></p>
   <p><strong>Notes:</strong> <%= movie.notes %></p>
+    <p><strong>description:</strong> <%= movie.description%></p>
   <p><strong>Rating:</strong> <%= movie.rating  %></p>
+
   <a class="add-btn" href="/users/<%= user._id %>/movies/<%= movie._id %>/edit">Edit</a>
   <form action="/users/<%= user._id %>/movies/<%= movie._id %>?_method=DELETE" method="POST" style="display:inline;">
     <button type="submit">🗑 Delete</button>
   </form>
-  <a href="/users/<%= user._id %>/movies" style="margin-left:10px;">⬅ Back to Watchlist</a>
-</div>
+<a class="add-btn" href="/users/<%= user._id %>/movies">⬅ Back to Watchlist</a></div>
