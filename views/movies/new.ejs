@@ -2,17 +2,21 @@
 <html>
 <head>
   <title>Add movie</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
+  <%- include('../partials/_navbar') %>
   <h1>Add a New movie</h1>
-  <form action="/movie" method="POST">
+  <form action="/users/<%= user._id %>/movies" method="POST">
     <label>Name: <input type="text" name="name" ></label><br>
     <label>director: <input type="text" name="director" ></label><br>
-    <label>watched: <input type="text" name="watched"></label><br>
+    <label>watched: <input type="checkbox" name="watched"></label><br>
     <label>notes: <input type="text" name="notes"></label><br>
     <label>Description: <textarea name="description"></textarea></label><br>
-    <button type="submit">done</button>
+<label>Rating (1-10): <input name="rate" type="number" min="1" max="10"></label>
   </form>
-  <a href="/cars"> Back</a>
+   <button type="submit">done</button>
+
+  <a href="/users/:userId/movies"> Back</a>
 </body>
 </html>
