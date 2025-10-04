@@ -6,6 +6,8 @@
 </head>
 <body>
   <%- include('../partials/_navbar') %>
+    <div class="page-container">
+
   <h1>Add a New movie</h1>
   <form action="/users/<%= user._id %>/movies" method="POST">
     <label>Name: <input type="text" name="name" ></label><br>
